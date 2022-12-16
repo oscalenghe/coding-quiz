@@ -13,13 +13,15 @@
 </head>
 
 <body>
-    <header>
+    <header id="start-screen" class="start">
         <h1>Timed Coding Quiz!</h1>
             <p>Answer the following coding questions to earn points.</p>
             <p>If the incorrect answer is selected, time will be deducted from the countdown. Good luck!</p>
-            <button class="start-button" id ="start" role="button">Begin Quiz</button>
+            <button class="buttons" id ="start" role="button">Begin Quiz</button>
     </header>
-    <section id="questions" class="hide">
+
+    <section id="questions"  class="hide">
+        <h2 class="timer">Time: <span id="time">0</span></h2>
         <h2 id="question-title"></h2>
         <div id="choices" class="choices"></div>
     </section>
@@ -28,10 +30,10 @@
         <h1>Quiz complete!</h1>
         <p>Your final score: <span id="final-score"></span></p>
         <p>Enter your intials: <input type="text" id="initials" max="3"/>
-        <button id="hs-submit">Submit</button></p>
+        <button id="submit-button">Submit</button></p>
     </section>
 
-    <button class="highscores-button" role="button" onClick="window.location.href='/scores.html';">View Highscores</a>
+    <button id ="hs-start-screen" class="buttons"  role="button" onClick="window.location.href='/scores.html';">View Highscores</a>
 
     <script src="/assets/script.js"></script>
 </body>

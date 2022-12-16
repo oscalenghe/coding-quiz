@@ -10,8 +10,12 @@ header {
    font-size: 32px;
 }
 
+.hide {
+    display: none;
+  }
+
 /* 'begin quiz' button styling */
-.start-button {
+.buttons {
   align-items: center;
   appearance: none;
   background-color: #FFD6D8;
@@ -31,6 +35,7 @@ header {
   padding-left: 16px;
   padding-right: 16px;
   margin-bottom: 20px;
+  margin-right: 20px;
   position: relative;
   text-align: left;
   text-decoration: none;
@@ -39,68 +44,77 @@ header {
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
- 
   font-size: 18px;
 }
 
-.start-button:hover {
+.buttons:hover {
   box-shadow: #FFADB1 0 0 0 1.5px inset, #FFADB1 0 2px 4px, #FFADB1 0 7px 13px -3px, #FFADB1 0 -3px 0 inset;
 }
 
-.start-button {
+.buttons {
   box-shadow: #FFADB1 0 4px 8px, #FFADB1 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
-.start-button {
+.buttons {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
 
+ 
 
-
-/* 'view highscores' button styling */
-.highscores-button {
+  #submit-button {
     align-items: center;
     appearance: none;
     background-color: #FFD6D8;
-    border: 1px solid #dbdbdb;
-    border-radius: .375em;
-    box-shadow: none;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
     box-sizing: border-box;
     color: #363636;
     cursor: pointer;
     display: inline-flex;
     font-family: 'Akshar', sans-serif;
-    font-size: 1rem;
-    height: 2.5em;
+    height: 48px;
     justify-content: center;
-    line-height: 1.5;
-    padding: calc(.5em - 1px) 1em;
-    margin-right: 15px;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 20px;
+    margin-right: 20px;
     position: relative;
-    text-align: center;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    vertical-align: top;
     white-space: nowrap;
+    font-size: 18px;
   }
   
-  .highscores-button:active {
-    border-color: #FFADB1;
-    outline: 0;
+
+  #submit-button:hover {
+    box-shadow: #FFADB1 0 0 0 1.5px inset, #FFADB1 0 2px 4px, #FFADB1 0 7px 13px -3px, #FFADB1 0 -3px 0 inset;
   }
   
-  .highscores-button:focus {
-    border-color: #FFADB1;
-    outline: 0;
+  #submit-button {
+    box-shadow: #FFADB1 0 4px 8px, #FFADB1 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
   }
   
-  .highscores-button:hover {
-    border-color:#FFADB1;
+  #submit-button {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
   }
-  
-  .highscores-button:focus:not(:active) {
-    box-shadow: #FFADB1 0 0 0 .125em;
+
+input[type=text] {
+    border: 2px solid  #FFADB1;
+    border-radius: 5px;
+    padding: 14px;
+    
   }
+
+ 
