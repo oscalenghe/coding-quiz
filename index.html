@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Timed Coding Quiz!</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@500&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/assets/style.css" />
 </head>
+
 <body>
-    
+    <header>
+        <h1>Timed Coding Quiz!</h1>
+            <p>Answer the following coding questions to earn points.</p>
+            <p>If the incorrect answer is selected, time will be deducted from the countdown. Good luck!</p>
+            <button class="start-button" id ="start" role="button">Begin Quiz</button>
+    </header>
+    <section id="questions" class="hide">
+        <h2 id="question-title"></h2>
+        <div id="choices" class="choices"></div>
+    </section>
+
+    <section id="end-screen" class="hide">
+        <h1>Quiz complete!</h1>
+        <p>Your final score: <span id="final-score"></span></p>
+        <p>Enter your intials: <input type="text" id="initials" max="3"/>
+        <button id="hs-submit">Submit</button></p>
+    </section>
+
+    <button class="highscores-button" role="button" onClick="window.location.href='/scores.html';">View Highscores</a>
+
+    <script src="/assets/script.js"></script>
 </body>
 </html>
+<!-- HTML !-->
+
+
+
