@@ -5,7 +5,7 @@ var choicesEl = document.querySelector("#choices");
 var submitBtn = document.querySelector("#submit-button");
 var startBtn = document.querySelector("#start");
 var initialsEl = document.querySelector("#initials");
-
+var feedbackEl = document.querySelector("#feedback");
 
 // variables for quiz
 //lists all questions, choices and answers
@@ -36,20 +36,9 @@ var questions = [
           "'And' Operator &&",
           "'Or' Operator ||",
           "'Not' Operator !",
-          "All the above"
+          "1, 2 and 3"
         ],
-        answer: "All the above"
-      },
-      {
-        title:
-          "Which one of these is not among the three different types of errors in JavaScript?",
-        choices: [
-          "Animation time errors",
-          "Load time errors",
-          "Run time errors",
-          "Logical Errors"
-        ],
-        answer: "Animation time errors"
+        answer: "1, 2 and 3"
       },
       {
         title: "What is the data type of variables in JavaScript?",
@@ -57,9 +46,9 @@ var questions = [
           "Object data types",
           "Function data type",
           "None of the above",
-          "All of the above"
+          "1 2 and 3"
         ],
-        answer: "Object data types"
+        answer: "1 2 and 3"
       },
       {
         title: "The condition in an if / else statement is enclosed within ____.",
@@ -72,9 +61,9 @@ var questions = [
           "numbers and strings",
           "other arrays",
           "booleans",
-          "all of the above"
+          "1, 2 and 3"
         ],
-        answer: "all of the above"
+        answer:  "1, 2 and 3"
       },
       {
         title:
@@ -90,8 +79,8 @@ var questions = [
       },
       {
         title: "What is the type of Pop up boxes available in JavaScript?:",
-        choices: ["Alert", "Confirm", "Prompt", "All the above"],
-        answer: "All the above"
+        choices: ["Alert", "Confirm", "Prompt", "1, 2 and 3"],
+        answer: "1, 2 and 3"
       }
 
 ];
@@ -104,17 +93,19 @@ var timerId;
 
 //this is what happens when the start quiz button is pressed
 function startQuiz() {
+     //retrieve elements
     var startScreenEl = document.getElementById("start-screen");
     var hsStartScreenEl = document.getElementById("hs-start-screen");
+     //hides the retrieved elements
     hsStartScreenEl.setAttribute("class", "hide");
     startScreenEl.setAttribute("class", "hide");
-   
+     //removes 'hide' class
     questionsEl.removeAttribute("class");
-  
+     //sets the timer and counts down
     timerId = setInterval(clockTick, 1000);
-
+     //displays the timer
     timerEl.textContent = time;
-    
+     //calls function to retrieve
     getQuestion();
    
 }
@@ -127,7 +118,7 @@ function getQuestion() {
     //update the HTML with the chosen question
     var titleEl = document.getElementById("question-title");
     titleEl.textContent = currentQuestion.title;
-
+    choicesEl.innerHTML = "";
       // loop over choices
   currentQuestion.choices.forEach(function(choice, i) {
     // create new button for each choice
@@ -147,22 +138,22 @@ function getQuestion() {
 
 function questionClick() {
     // check if user guessed wrong
-    if (this.value !== questions[currentQuestionIndex].answer) {
+    if (this.value !== questions[questionIndex].answer) {
       // penalize time
       time -= 15;
-  
+    
       if (time < 0) {
         time = 0;
       }
       // display new time on page
       timerEl.textContent = time;
-      feedbackEl.textContent = "Wrong!";
+      feedbackEl.textContent = ("Incorrect!");
       feedbackEl.style.color = "red";
-      feedbackEl.style.fontSize = "400%";
+      feedbackEl.style.fontSize = "200%";
     } else {
-      feedbackEl.textContent = "Correct!";
+      feedbackEl.textContent = ("Correct!");
       feedbackEl.style.color = "green";
-      feedbackEl.style.fontSize = "400%";
+      feedbackEl.style.fontSize = "200%";
     }
   
     // flash right/wrong feedback
@@ -172,10 +163,10 @@ function questionClick() {
     }, 1000);
   
     // next question
-    currentQuestionIndex++;
+    questionIndex++;
   
     // time checker
-    if (currentQuestionIndex === questions.length) {
+    if (questionIndex === questions.length) {
       quizEnd();
     } else {
       getQuestion();
@@ -216,7 +207,7 @@ function questionClick() {
     var initials = initialsEl.value.trim();
   
     if (initials !== "") {
-      // get saved scores from localstorage, or if not any, set to empty array
+      // get saved scores from localstorage and set to empty array
       var highscores =
         JSON.parse(window.localStorage.getItem("highscores")) || [];
   
@@ -231,12 +222,11 @@ function questionClick() {
       window.localStorage.setItem("highscores", JSON.stringify(highscores));
   
       // redirect to next page
-      window.location.href = "score.html";
+      window.location.href = "scores.html";
     }
   }
   
   function checkForEnter(event) {
-    // "13" represents the enter key
     if (event.key === "Enter") {
       saveHighscore();
     }
@@ -244,9 +234,39 @@ function questionClick() {
   
   // submit initials
   submitBtn.onclick = saveHighscore;
-  
+
   // start quiz
   startBtn.onclick = startQuiz;
-  
+ 
   initialsEl.onkeyup = checkForEnter;
 
+
+
+
+  function printHighscores() {
+    // either get scores from localstorage 
+    var highscores = JSON.parse(window.localStorage.getItem("highscores"));
+  
+    highscores.forEach(function(score) {
+      // create li element and grab highscore list element
+      var scoreList = document.getElementById("highscore-list");
+      var createLi = document.createElement("li");
+     
+      // print highscore on page along with initials
+      createLi.innerHTML = score.initials + " - " + score.score;
+  
+      // display on page
+      scoreList.appendChild(createLi);
+    });
+  }
+
+  printHighscores();
+
+  function clearHighscores() {
+    window.localStorage.removeItem("highscore");
+    window.location.reload();
+  }
+  
+  document.getElementById("clear-scores").onclick = clearHighscores;
+  
+ 
