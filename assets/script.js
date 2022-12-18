@@ -2,11 +2,13 @@
 var questionsEl = document.querySelector("#questions");
 var timerEl = document.querySelector("#time");
 var choicesEl = document.querySelector("#choices");
-var submitBtn = document.querySelector("#submit-button");
-var startBtn = document.querySelector("#start");
-var initialsEl = document.querySelector("#initials");
+var submitBtn = document.getElementById("submit-button");
+var startBtn = document.getElementById("start-button");
+var initialsEl = document.getElementsByClassName("initials");
 var feedbackEl = document.querySelector("#feedback");
 console.log(submitBtn);
+console.log(startBtn);
+console.log(initialsEl);
 // variables for quiz
 //lists all questions, choices and answers
 var questions = [
@@ -91,7 +93,8 @@ var timerId;
 
 
 //this is what happens when the start quiz button is pressed
-function startQuiz() {
+function startQuiz(event) {
+  event.preventDefault();
      //retrieve elements
     var startScreenEl = document.getElementById("start-screen");
     var hsStartScreenEl = document.getElementById("hs-start-screen");
@@ -203,7 +206,7 @@ function questionClick() {
   
   function saveHighscore() {
     // get value of input box
-    var initials = initialsEl.value.trim();
+    var initials = initialsEl.value;
   
     if (initials !== "") {
       // get saved scores from localstorage and set to empty array
@@ -220,7 +223,7 @@ function questionClick() {
       highscores.push(newScore);
       window.localStorage.setItem("highscores", JSON.stringify(highscores));
   
-      // redirect to next page
+      // redirect to highscore page page
       window.location.href = "scores.html";
     }
   }
@@ -248,8 +251,8 @@ function questionClick() {
   
     highscores.forEach(function(score) {
       // create li element and grab highscore list element
-      var scoreList = document.getElementById("highscore-list");
-      var createLi = document.createElement("li");
+      var scoreList = document.getElementById("highscores");
+      var createLi = document.createElement("p");
      
       // print highscore on page along with initials
       createLi.innerHTML = score.initials + " - " + score.score;
@@ -262,7 +265,7 @@ function questionClick() {
   printHighscores();
 
   function clearHighscores() {
-    window.localStorage.removeItem("highscore");
+    window.localStorage.removeItem("highscores");
     window.location.reload();
   }
   

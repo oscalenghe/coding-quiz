@@ -17,7 +17,7 @@
         <h1>Timed Coding Quiz!</h1>
             <p>Answer the following coding questions to earn points.</p>
             <p>If the incorrect answer is selected, time will be deducted from the countdown. Good luck!</p>
-            <button class="buttons" id ="start" role="button">Begin Quiz</button>
+            <button class="buttons" id ="start-button" role="button">Begin Quiz</button>
     </header>
 
     <section id="questions"  class="hide">
@@ -29,9 +29,10 @@
     <section id="end-screen" class="hide">
         <h1>Quiz complete!</h1>
         <p>Your final score: <span id="final-score"></span></p>
-        <p>Enter your intials: <input type="text" id="initials" max="3"/></p>
-        <button id="submit-button">Submit</button>
+        <p>Enter your intials: <input type="text" class="initials" max="3"/></p>
+        <button id="submit-button" class="buttons">Submit</button>
     </section>
+
 
     <div id="feedback" class="feedback hide"></div>
 

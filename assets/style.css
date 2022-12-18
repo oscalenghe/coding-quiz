@@ -63,7 +63,7 @@ header {
 
  
 
-  #submit-button {
+  .submit-button {
     align-items: center;
     appearance: none;
     background-color: #FFD6D8;
@@ -96,16 +96,16 @@ header {
   }
   
 
-  #submit-button:hover {
+  .submit-button:hover {
     box-shadow: #FFADB1 0 0 0 1.5px inset, #FFADB1 0 2px 4px, #FFADB1 0 7px 13px -3px, #FFADB1 0 -3px 0 inset;
   }
   
-  #submit-button {
+  .submit-button {
     box-shadow: #FFADB1 0 4px 8px, #FFADB1 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
     transform: translateY(-2px);
   }
   
-  #submit-button {
+  .submit-button {
     box-shadow: #D6D6E7 0 3px 7px inset;
     transform: translateY(2px);
   }
@@ -118,3 +118,7 @@ input[type=text] {
   }
 
  
+  .highscores {
+    text-align: center;
+    margin-right: 45px;
+  }
