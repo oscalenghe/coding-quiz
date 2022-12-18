@@ -118,7 +118,7 @@ input[type=text] {
   }
 
  
-  .highscores {
+  #highscores {
     text-align: center;
     margin-right: 45px;
   }
