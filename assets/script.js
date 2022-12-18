@@ -6,7 +6,7 @@ var submitBtn = document.querySelector("#submit-button");
 var startBtn = document.querySelector("#start");
 var initialsEl = document.querySelector("#initials");
 var feedbackEl = document.querySelector("#feedback");
-
+console.log(submitBtn);
 // variables for quiz
 //lists all questions, choices and answers
 var questions = [
@@ -88,7 +88,6 @@ var questions = [
 var questionIndex = 0;
 var time = questions.length * 15;
 var timerId;
-
 
 
 //this is what happens when the start quiz button is pressed
@@ -213,7 +212,7 @@ function questionClick() {
   
       // format new score object for current user
       var newScore = {
-        score: time,
+        highscores: time,
         initials: initials
       };
   
@@ -232,7 +231,7 @@ function questionClick() {
     }
   }
   
-  // submit initials
+  // submit highscore
   submitBtn.onclick = saveHighscore;
 
   // start quiz
@@ -244,7 +243,7 @@ function questionClick() {
 
 
   function printHighscores() {
-    // either get scores from localstorage 
+    // get scores from localstorage 
     var highscores = JSON.parse(window.localStorage.getItem("highscores"));
   
     highscores.forEach(function(score) {
